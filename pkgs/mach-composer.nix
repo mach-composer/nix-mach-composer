@@ -41,7 +41,7 @@ stdenvNoCC.mkDerivation {
 
   installPhase = ''
     mkdir -p $out/bin
-    cp -vr ./bin/mach-composer $out/bin/bin/mach-composer
+    cp -vr ./bin/mach-composer $out/bin/mach-composer
     wrapProgram $out/bin/bin/mach-composer --prefix PATH : ${lib.makeBinPath ([ git installShellFiles terraform ])}
   '';
   postInstall = ''
