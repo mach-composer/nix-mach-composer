@@ -7,7 +7,6 @@ system ? builtins.currentSystem
 , installShellFiles
 , stdenvNoCC
 , git
-, installShellFiles
 , terraform
 , makeWrapper
 }:
