@@ -14,5 +14,5 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  mach-composer = pkgs.callPackage ./pkgs/mach-composer { };
+  mach-composer = pkgs.callPackage ./pkgs/mach-composer.nix { };
 }
