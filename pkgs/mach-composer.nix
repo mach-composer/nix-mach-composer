@@ -12,24 +12,24 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "1qiz60d9pq528g7x8z8zlay96x5jz18h8nm6vhzkq3qhji1mqvb6";
-    armv6l-linux = "0dcgb2n30x8brqgb2yj3f7qxv21kwar5zmn91f321r5lkxq1f5hv";
-    aarch64-linux = "1q60skib2jx2b8fy6k75rh8b5fw7x0kx07sdxylcsasc9ikinnn3";
-    x86_64-darwin = "0z7xdyjqnfkv1p1xs9k2v8jr2wfkalhgclc9z1lr7m4vlyxpbgmp";
-    aarch64-darwin = "1w8cv8wvif2wy5q40ifxlaf9a3l6rhvd2kizfhwgb8zv5x2xnmm6";
+    x86_64-linux = "1a1ckbr7il53b7pci2wjhzjb39szpb1m74833pajcclgv9l4rsy3";
+    armv6l-linux = "1f6yg7d06rwrly1xs1490jgyqrwrd7dpjf5anvn5whh6p7i5sqm6";
+    aarch64-linux = "1wcpr5q4b3543w9b0mi63al6gfp14y3c6aqhd4yg6sh95dvds78y";
+    x86_64-darwin = "0q77rpdw4q6310z3p8k8qhc5k09l4xvf2d5rm3a5ayq5g1dmnvhq";
+    aarch64-darwin = "101sy1fyqws95kf9h2xr30dr498xa6y1zhh7r89zhz06swpriw7v";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-43b3dca/mach-composer-2.20.0-beta-43b3dca-linux-amd64.tar.gz";
-    armv6l-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-43b3dca/mach-composer-2.20.0-beta-43b3dca-linux-armv6.tar.gz";
-    aarch64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-43b3dca/mach-composer-2.20.0-beta-43b3dca-linux-arm64.tar.gz";
-    x86_64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-43b3dca/mach-composer-2.20.0-beta-43b3dca-darwin-amd64.tar.gz";
-    aarch64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-43b3dca/mach-composer-2.20.0-beta-43b3dca-darwin-arm64.tar.gz";
+    x86_64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-ab84862/mach-composer-2.20.0-beta-ab84862-linux-amd64.tar.gz";
+    armv6l-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-ab84862/mach-composer-2.20.0-beta-ab84862-linux-armv6.tar.gz";
+    aarch64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-ab84862/mach-composer-2.20.0-beta-ab84862-linux-arm64.tar.gz";
+    x86_64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-ab84862/mach-composer-2.20.0-beta-ab84862-darwin-amd64.tar.gz";
+    aarch64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.20.0-beta-ab84862/mach-composer-2.20.0-beta-ab84862-darwin-arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "mach-composer";
-  version = "2.20.0-beta-43b3dca";
+  version = "2.20.0-beta-ab84862";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
@@ -42,7 +42,7 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     mkdir -p $out/bin
     cp -vr ./bin/mach-composer $out/bin/mach-composer
-    wrapProgram $out/bin/bin/mach-composer --prefix PATH : ${lib.makeBinPath ([ git installShellFiles terraform ])}
+    wrapProgram $out/bin/mach-composer --prefix PATH : ${lib.makeBinPath ([ git terraform ])}
   '';
   postInstall = ''
     installShellCompletion --cmd mach-composer \
