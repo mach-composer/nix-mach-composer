@@ -12,24 +12,24 @@ system ? builtins.currentSystem
 }:
 let
   shaMap = {
-    x86_64-linux = "1c1mpmbq0hwfakb98zvc0vm6vsrfd6hvm0rff94g4vcdnfy27s46";
-    armv6l-linux = "1fvjwcjq1fzw5czd2n9g6znq3hlan81s9cyknpmlnpiayrdqrl00";
-    aarch64-linux = "1wg1bgd0l0nwp0wlchcfcyckpvn61sg9xlh05296zsyi7w4w4387";
-    x86_64-darwin = "01b4w3zznjqvz3qmv0i3dhrvybx9l5qqqgp2i96rqg7q0zzpsc1l";
-    aarch64-darwin = "1bmcn5gd4baqskb2ns51xmq8g2f65hljxd67irgb2751im1sibkf";
+    x86_64-linux = "1441xlh9ssxhqm5qjs5203k25s6g2lfjcrxz6klllqhk60k2j3d6";
+    armv6l-linux = "1qpmndjm6wbal6nagwrkp4vyhcw8gfyj35x07c1x5v14pqgmv0g1";
+    aarch64-linux = "0rxgdk7vq04y5sk5n447flb8hwwljwyxkj7a13qbxdb6m2mbwkyq";
+    x86_64-darwin = "0ny3cpym11hrdhcbfz9zs2jch9dijj6f05lj14px39cviq7c95xy";
+    aarch64-darwin = "1g7qlnq8xmdqpllnaq79f4asjlky5vpypnim15952fh7d5gxin6k";
   };
 
   urlMap = {
-    x86_64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.1/mach-composer-2.26.1-linux-amd64.tar.gz";
-    armv6l-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.1/mach-composer-2.26.1-linux-armv6.tar.gz";
-    aarch64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.1/mach-composer-2.26.1-linux-arm64.tar.gz";
-    x86_64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.1/mach-composer-2.26.1-darwin-amd64.tar.gz";
-    aarch64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.1/mach-composer-2.26.1-darwin-arm64.tar.gz";
+    x86_64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.2/mach-composer-2.26.2-linux-amd64.tar.gz";
+    armv6l-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.2/mach-composer-2.26.2-linux-armv6.tar.gz";
+    aarch64-linux = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.2/mach-composer-2.26.2-linux-arm64.tar.gz";
+    x86_64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.2/mach-composer-2.26.2-darwin-amd64.tar.gz";
+    aarch64-darwin = "https://github.com/mach-composer/mach-composer-cli/releases/download/v2.26.2/mach-composer-2.26.2-darwin-arm64.tar.gz";
   };
 in
 stdenvNoCC.mkDerivation {
   pname = "mach-composer";
-  version = "2.26.1";
+  version = "2.26.2";
   src = fetchurl {
     url = urlMap.${system};
     sha256 = shaMap.${system};
